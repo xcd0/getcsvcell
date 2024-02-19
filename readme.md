@@ -2,6 +2,8 @@
 
 csvからちょっとデータを取りたいときに使う。  
 
+## usage
+
 ```sh
 $ ./getcsvcell.exe 
 Usage: getcsvcell [--input INPUT] [--row ROW] [--col COL] [--grep GREP] [--debug] [--version] <command> [<args>]
@@ -19,3 +21,10 @@ Options:
 Commands:
   version                バージョン情報を出力する。
 ```
+
+## install
+
+```sh
+go install github.com/xcd0/getcsvcell@latest
+```
+

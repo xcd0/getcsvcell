@@ -1,4 +1,4 @@
-module getcsvcell
+module github.com/xcd0/getcsvcell
 
 go 1.22.0
 

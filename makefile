@@ -1,7 +1,9 @@
 BIN           := ./getcsvcell.exe
 VERSION       := 0.0.1
 REVISION      := `git rev-parse --short HEAD`
-FLAG :=  -a -tags netgo -trimpath -ldflags='-X main.version=$(VERSION) -X main.revision='$(REVISION)' -s -w -extldflags="-static" -buildid='
+#FLAG          :=  -a -tags netgo -trimpath -ldflags='-X main.version=$(VERSION) -X main.revision='$(REVISION)' -s -w -extldflags="-static" -buildid='
+#FLAG_DEVELOP  :=  -ldflags='-X main.revision='$(REVISION)
+FLAG          :=  -a -tags netgo -trimpath -ldflags='-s -w -extldflags="-static" -buildid='
 
 all:
 	cat ./makefile
@@ -10,7 +12,8 @@ build:
 	rm -rf ./files
 	make generate
 	make fmt
-	go build
+	#go build $(FLAG_DEVELOP)
+	go build 
 
 release:
 	rm -rf ./files
