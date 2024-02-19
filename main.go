@@ -181,7 +181,17 @@ func main() {
 		ShowHelp(fmt.Sprintf("%v", errors.Errorf("%v", err)))
 	}
 	if err := parser.Parse(os.Args[1:]); err != nil {
-		panic(errors.Errorf("%v", err))
+		//log.Printf("%#v", err.Error())
+		if err.Error() == "help requested by user" {
+			//ShowHelp(fmt.Sprintf("%v", errors.Errorf("%v", err)))
+			ShowHelp("")
+			return
+		} else if err.Error() == "version requested by user" {
+			fmt.Printf("%v version %v.%v\n", GetFileNameWithoutExt(os.Args[0]), version, revision)
+			return
+		} else {
+			panic(errors.Errorf("%v", err))
+		}
 	}
 
 	if args.Debug {
