@@ -226,7 +226,7 @@ func GetCsvCell(args *Args, filename string, n int, m int, grep string) (string,
 			return "", fmt.Errorf("指定された行 %v が範囲外です。", n)
 		}
 	} else if n < 0 && m >= 0 {
-		if m < len(records[n]) {
+		if len(records) > 0 && m < len(records[0]) {
 			// m列目のみ出力する。
 			picked := ""
 			for _, row_n := range records {
